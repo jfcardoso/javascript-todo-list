@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="todolist">
+<head>
+    <title>Todo List - Angular</title>
+    <link type="text/css" rel="stylesheet" media="screen" href="css/bootstrap.css"/>
+    <link type="text/css" rel="stylesheet" media="screen" href="css/todolist.css"/>
+    <script src="js/lib/bootstrap.js"></script>
+    <script src="js/lib/angular.js"></script>
+    <script src="js/app/todolist.js"></script>
+</head>
+<body>
+	<div class="container">
+	    <header>
+	        <div class="navbar">
+	            <div class="navbar-inner">
+	                <div class="container">
+	                    <a class="brand" href="#">
+	                        Todo List - Angular
+	                    </a>
+	                </div>
+	            </div>
+	        </div>
+	    </header>
+    
+    	<div ng-view></div>
+    
+	    <footer class="container navbar navbar-fixed-top">
+			<hr>
+	        <p><small>&copy; 2012. <a href="https://twitter.com/jandersonfc">@jandersonfc</a> none rights reserved. based in one old app the 37signals called tadalist</small></p>
+	    </footer>
+    </div>
+</body>
+</html>

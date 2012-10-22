@@ -1,0 +1,20 @@
+<div class="row">
+	<center>
+		<div class="well well-small well-radius span2" >
+			<h4><a href="#/">My Lists</a></h4>
+		</div>
+	</center>
+</div>
+
+<div class="row" >
+	<form name="list">
+		<div class="span7">
+			<label><h5>Name your new list <small>(Ex.:"Learn AngularJS")</small></h5></label>
+			<input type="text" name="name" ng-model="name" class="span5" required >
+		</div>
+		<div class="span7">
+			<button ng-click="save()" ng-disabled="isClean() || list.$invalid" class="btn btn-primary btn-mini btn-radius">Create this list</button> or 
+			<a href="#/">Cancel</a>
+		</div>
+	</form>
+</div>
