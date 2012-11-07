@@ -7,13 +7,13 @@
 </div>
 
 <div class="row" >
-	<form name="list">
-		<div class="span7">
+	<form name="form-list">
+		<div>
 			<label><h5>Name your new list <small>(Ex.:"Learn AngularJS")</small></h5></label>
-			<input type="text" name="name" ng-model="name" class="span5" required >
+			<input type="text" name="name" ng-model="list.name" class="span5" required >
 		</div>
-		<div class="span7">
-			<button ng-click="save()" ng-disabled="isClean() || list.$invalid" class="btn btn-primary btn-mini btn-radius">Create this list</button> or 
+		<div>
+			<button ng-click="new()" ng-disabled="isClean() || list.$invalid" class="btn btn-primary btn-mini btn-radius">Create this list</button> or 
 			<a href="#/">Cancel</a>
 		</div>
 	</form>

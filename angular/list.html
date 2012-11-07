@@ -5,14 +5,12 @@
 		</div>
 	</center>
 </div>
-<div>
-	<div ng-show="lists.length > 0" >
-		 <h6><small>MY LISTS</small></h6>
-		 <hr>
-		 <ul class="lists" >
-			<li ng-repeat="list in lists">
-				<h5><a href="#/lists/{{list.id}}">{{list.name}}</a><small></small></h5>
-			</li>
-		</ul>
-	</div>
+<div ng-show="lists.length > 0" >
+	 <h6><small>MY LISTS</small></h6>
+	 <hr>
+	 <ul class="lists" >
+		<li ng-repeat="list in lists">
+			<h5><a href="#/lists/{{list.id}}/items">{{list.name}}</a><small> - {{ list.open_items }} left</small></h5>
+		</li>
+	</ul>
 </div>
