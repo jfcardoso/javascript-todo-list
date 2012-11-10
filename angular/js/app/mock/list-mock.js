@@ -17,31 +17,33 @@ angular.module('module-list',[])
     
     listProvider.prototype.mock = true;
 
-    listProvider.prototype.get = function(id) {
+    listProvider.prototype.get = function(params, cb) {
       for (i=0;i<lists.length;i++){
-        if (lists[i].id == id){
-          return lists[i];
+        if (lists[i].id == params.id){
+          return cb(lists[i]);
         }
       }
+
     }
 
-    listProvider.prototype.list = function() {
-      return lists;
+    listProvider.prototype.query = function(params,cb) {
+      return cb(lists);
     }
 
     listProvider.prototype.save = function(list,cb) {
       if (list.id){
-        oldList = this.get(list.id)
-        oldList.name = list.name;
-        oldList.open_items = list.open_items;
-        return cb(oldList);
+        this.get({id:list.id},function(oldList){
+          oldList.name = list.name;
+          oldList.open_items = list.open_items;
+          return cb(oldList);
+        })
       }else{
         var new_id = lists.length+1;
         var new_list = { 
           id: new_id,
           name: list.name,
           open_items: 0
-        }
+        };
         lists.push(new_list);
         return cb(new_list);
       }
@@ -64,4 +66,4 @@ angular.module('module-list',[])
   })
   .service('ListService', ['ListProvider',function(ListProvider){
       return ListProvider.getInstance();
-  }]);
+  }])

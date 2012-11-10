@@ -1,11 +1,17 @@
 function ListCtrl($scope,$location,ListService) {
 	
-	$scope.lists = ListService.list();
-	
+	ListService.query({}, function(lists) {
+		$scope.lists = lists;
+	})
+
+}
+
+function ListNewCtrl($scope,$location,ListService) {
+
 	$scope.new = function() {
-		console.log($scope.list)
 		ListService.save($scope.list,function(list) {
 			$location.path('/lists/'+list.id+'/items');
 	    })
 	}
+
 }
