@@ -1,0 +1,26 @@
+.well-radius {
+    border-radius: 30px;
+}
+
+.btn-radius {
+    border-radius: 30px;
+}
+
+.btn-link {
+  text-decoration: underline;
+}
+
+span.done-true {
+	text-decoration: line-through;
+	color: grey;
+}
+
+footer.container.navbar-fixed-top {
+	top: auto;
+	bottom: 0;
+}
+
+a {
+  text-decoration: underline;
+}
+

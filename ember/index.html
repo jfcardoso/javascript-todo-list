@@ -1,0 +1,157 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6"> <![endif]--> <!--[if IE 7 ]>    <html lang="en" class="ie7"> <![endif]--> <!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]--> <!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Todo List - Ember</title>
+  <link type="text/css" rel="stylesheet" media="screen" href="css/bootstrap.css"/>
+  <link type="text/css" rel="stylesheet" media="screen" href="css/todolist.css"/>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+  
+  <script type="text/x-handlebars" data-template-name="index">
+	
+	<div class="container">
+	    <header>
+	        <div class="navbar">
+	            <div class="navbar-inner">
+	                <div class="container">
+	                    <a class="brand" href="#">
+	                        Todo List - Ember
+	                    </a>
+	                </div>
+	            </div>
+	        </div>
+	    </header>
+    
+    	{{outlet}}
+    
+	    <footer class="container navbar navbar-fixed-top">
+			<hr>
+	        <p><small>&copy; 2012. <a href="https://twitter.com/jandersonfc">@jandersonfc</a> none rights reserved. based in one old app the 37signals called tadalist</small></p>
+	    </footer>
+    </div>
+
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="list">
+    <div class="row">
+		<center>
+			<div class="well well-small well-radius span3" >
+				<h4>My Lists  <small><a href="#/lists/new">  create a new list</a></small></h4> 
+			</div>
+		</center>
+	</div>
+	<div>
+		 <h6><small>MY LISTS</small></h6>
+		 <hr>
+		 <ul class="lists" >
+		 	{{#each content.lists}}
+			<li>
+				<h5>
+					<a href="#/lists/{{{raw id}}}/items">{{name}}</a>
+					<small> - {{ open_items }} left</small>
+				</h5>
+			</li>
+			{{/each}}
+		</ul>
+	</div>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="new">
+    <div class="row">
+		<center>
+			<div class="well well-small well-radius span2" >
+				<h4><a href="#/">My Lists</a></h4>
+			</div>
+		</center>
+	</div>
+
+	<div class="row" >
+		<form name="form-list">
+			<div>
+				<label><h5>Name your new list <small>(Ex.:"Learn Emberjs")</small></h5></label>
+				{{view Ember.TextField valueBinding="name" viewName="name"}}
+			</div>
+			<div>
+				<button type="submit" {{action "new" target="controller"}} class="btn btn-primary btn-mini btn-radius">Create this list</button> or 
+				<a href="#/">Cancel</a>
+			</div>
+		</form>
+	</div>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="todo">
+    <div class="row">
+		<center>
+			<div class="well well-small well-radius span3" >
+				<h4><a href="#/">My Lists</a> <small><b>this list:</b> <a href="#/lists/{{list.id}}/edit">edit</a></small></h4>
+			</div>
+		</center>
+	</div>
+
+	<h4>{{content.list.name}}</h4>
+
+	<div class="row">
+		<div class="span7">
+			<ul class="unstyled">
+				{{#each filtered_open}}
+				<li>
+					<input type="checkbox" {{bindAttr checked="done"}} 
+					{{action close_item this target="controller" }}>
+					<span class="done-{{{raw done}}}">{{this.name}}</span>
+				</li>
+				{{/each}}
+			</ul>
+		</div>
+	</div>
+	<div class="row" >
+		{{#view Ember.View isVisibleBinding="view_close"}}
+        	<div class="span7" >
+				<button class="btn btn-link" {{action state_open target="controller"}}>Add another item</button></p>
+			</div>
+		{{/view}}
+		{{#view Ember.View isVisibleBinding="view_open"}}
+		<div class="span7" >
+			<form name="form-item">
+				{{view Ember.TextField valueBinding="name" viewName="name"}}
+				<p><button type="submit" {{action add_item target="controller"}} class="btn btn-primary btn-mini btn-radius">+ Add this item</button> 
+				<button class="btn btn-link" {{action state_close target="controller"}}>Close</button></p>
+			</form>
+		</div>
+		{{/view}}
+	</div>
+	<div class="row">
+		<div class="span7">
+			<ul class="unstyled">
+				{{#each filtered_done}}
+				<li>
+					<input type="checkbox" {{bindAttr checked="done"}} 
+					{{action open_item this target="controller"}}>
+					<span class="done-{{{raw done}}}"><small>{{name}}</small></span>
+				</li>
+				{{/each}}
+			</ul>
+		</div>
+	</div>
+  </script>
+
+  <!-- LIBS -->
+  	<script src="js/lib/jquery-1.7.2.min.js"></script>
+    <script src="js/lib/bootstrap.js"></script>
+    <script src="js/lib/handlebars-1.0.0.beta.6.js"></script>
+    <script src="js/lib/ember-1.0.0-pre.2.js"></script>
+    
+    <!-- APP | ROUTERS--> 
+    <script src="js/app/todolist.js"></script>
+
+</body>
+</html>
