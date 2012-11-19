@@ -79,7 +79,7 @@
 		<form name="form-list">
 			<div>
 				<label><h5>Name your new list <small>(Ex.:"Learn Emberjs")</small></h5></label>
-				{{view Ember.TextField valueBinding="name" viewName="name"}}
+				{{view App.TextField valueBinding="name" viewName="name" class="span5"}}
 			</div>
 			<div>
 				<button type="submit" {{action "new" target="controller"}} class="btn btn-primary btn-mini btn-radius">Create this list</button> or 
@@ -120,13 +120,13 @@
 			</div>
 		{{/view}}
 		{{#view Ember.View isVisibleBinding="view_open"}}
-		<div class="span7" >
-			<form name="form-item">
-				{{view Ember.TextField valueBinding="name" viewName="name"}}
-				<p><button type="submit" {{action add_item target="controller"}} class="btn btn-primary btn-mini btn-radius">+ Add this item</button> 
-				<button class="btn btn-link" {{action state_close target="controller"}}>Close</button></p>
-			</form>
-		</div>
+			<div class="span7" >
+				<form name="form-item">
+					{{view App.TextField valueBinding="name" viewName="name" class="span5" id="nameItem"}}
+					<p><button type="submit" {{action add_item target="controller"}} class="btn btn-primary btn-mini btn-radius">+ Add this item</button> 
+					<button class="btn btn-link" {{action state_close target="controller"}}>Close</button></p>
+				</form>
+			</div>
 		{{/view}}
 	</div>
 	<div class="row">
@@ -144,14 +144,37 @@
 	</div>
   </script>
 
-  <!-- LIBS -->
-  	<script src="js/lib/jquery-1.7.2.min.js"></script>
-    <script src="js/lib/bootstrap.js"></script>
-    <script src="js/lib/handlebars-1.0.0.beta.6.js"></script>
-    <script src="js/lib/ember-1.0.0-pre.2.js"></script>
-    
-    <!-- APP | ROUTERS--> 
-    <script src="js/app/todolist.js"></script>
+	<!-- LIBS -->
+	<script src="js/lib/jquery-1.7.2.min.js"></script>
+	<script src="js/lib/bootstrap.js"></script>
+	<script src="js/lib/handlebars-1.0.0.beta.6.js"></script>
+	<script src="js/lib/ember-1.0.0-pre.2.js"></script>
+	<script src="js/lib/ember-rest-0.1.1.js"></script>
+
+	<!-- APP | ROUTERS--> 
+	<script src="js/app/todolist.js"></script>
+
+	<!-- MOCKS -->
+	<script src="js/app/view/list-view.js"></script>
+	<script src="js/app/view/item-view.js"></script>
+
+	<!-- MODELS -->
+	<script src="js/app/model/models.js"></script>
+
+	<!-- MOCKS -->
+	<script src="js/app/mock/list-mock.js"></script>
+	<script src="js/app/mock/item-mock.js"></script>
+
+	<!-- SERVICES -->
+	<!-- <script src="js/app/service/list-service.js"></script> -->
+	<!--<script src="js/app/service/item-service.js"></script>-->
+
+	<!-- CONTROLLERS -->
+	<script src="js/app/controller/list-ctrl.js"></script>
+	<script src="js/app/controller/item-ctrl.js"></script>
+
+	<!-- INITIALIZE EMBER APPLCATION -->
+	<script type="text/javascript">App.initialize()</script>
 
 </body>
 </html>

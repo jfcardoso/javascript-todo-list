@@ -1,4 +1,4 @@
-function ListCtrl($scope,$location,ListService, $http) {
+function ListCtrl($scope,$location,ListService) {
 	
 	ListService.query({}, function(lists) {
 		$scope.lists = lists;
@@ -6,7 +6,7 @@ function ListCtrl($scope,$location,ListService, $http) {
 	
 }
 
-function ListNewCtrl($scope,$location,ListService, $resource) {
+function ListNewCtrl($scope,$location,ListService) {
 
 	$scope.new = function() {
 		ListService.save($scope.list,function(list) {

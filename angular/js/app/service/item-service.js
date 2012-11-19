@@ -5,9 +5,6 @@ angular.module('module-item', ['ngResource'])
             'http://localhost:8000/api/v1/items/',
             {
                 '8000': ':8000'
-            },
-            {
-                update: {method:'PUT'}
             }
         )
          
