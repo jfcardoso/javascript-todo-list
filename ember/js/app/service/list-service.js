@@ -1,7 +1,7 @@
 var ListResource = Ember.Resource.extend({ 
 	resourceUrl:        'http://localhost:8000/api/v1/lists',
-	resourceName: 'lists',
-  	resourceProperties: ['id', 'name'],
+	resourceName: 'list',
+  	resourceProperties: ['id', 'name','open_items'],
 });
 var resource = ListResource.create();
 
@@ -40,7 +40,7 @@ var ListService = Ember.Object.create({
   	save: function(params,cb){
 		$.ajax({
             type: "POST",
-			url: "/people",
+			url: "http://localhost:8000/api/v1/lists",
 			data: JSON.stringify(params),
 			success: function ( data ) {
 				return cb(data);

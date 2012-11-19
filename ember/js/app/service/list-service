@@ -1,0 +1,8 @@
+$.post({
+      url: "/people",
+      data: JSON.stringify( this.toArray() ),
+      success: function ( data ) {
+        // your data should already be rendered with latest changes
+        // however, you might want to change status from something to "saved" etc.
+      }
+    });
