@@ -30,7 +30,7 @@ App.TodoController = Ember.Controller.extend({
 		item.set('done',true)
 		ItemService.save(item,function(result){
 			ItemService.query({list:todoController.get("content.list").id},function(result){
-				todoController.set("content.items",result)		
+				todoController.set("content.items",result)
 			})
 		})
 	},
@@ -39,11 +39,11 @@ App.TodoController = Ember.Controller.extend({
 		var contentList = todoController.get('content.list');
 		var contentItems = todoController.get('content.items');
 		contentList.open_items++;
-		var item = App.Item.create(
+		var item = 
 		{ 
-	  		name: todoController.get('name'), 
+	  		name: todoController.get('name'),
 	  		list: contentList
-	  	});
+	  	};
 	  	ItemService.save(item,function(result){
 	  		ItemService.query({list:contentList.id},function(result){
 				todoController.set("content.items",result);

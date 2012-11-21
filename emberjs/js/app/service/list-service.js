@@ -1,51 +1,20 @@
-var ListResource = Ember.Resource.extend({ 
-	resourceUrl:        'http://localhost:8000/api/v1/lists',
-	resourceName: 'list',
-  	resourceProperties: ['id', 'name','open_items'],
-});
-var resource = ListResource.create();
+App.List = DS.Model.extend({
+    name: DS.attr('string'),
+    open_items: DS.attr('number',{defaultValue:0}),
+    items: DS.hasMany('App.Item'),
+})
 
 var ListService = Ember.Object.create({ 
-	query: function(params,cb){	
-		/*var obj = []
-		var result = resource.findResource()
-				.done(function(json){
-					for (var i=0; i < json.length; i++){
-	      				obj.push(App.List.create({id:json[i].id,name:json[i].name,open_items:json[i].open_items}));
-	      			}
-	      			console.log(obj)
-	      			cb(obj)
-				})
-		console.log(obj)*/
-		//	return cb(obj)
-
-		$.ajax({
-            type: "GET",
-			url: "http://localhost:8000/api/v1/lists",
-			success: function ( data ) {
-				return cb(data);
-			}
-    	});
-    	//return cb([])
+	query: function(params,cb){
+		return cb(App.store.findQuery(App.List))
   	},
   	get: function(params,cb){
-  		$.ajax({
-            type: "GET",
-			url: "http://localhost:8000/api/v1/lists/"+params.id,
-			success: function ( data ) {
-				return cb(data);
-			}
-    	});
+  		return cb(App.store.find(App.List,params.id))
   	},
   	save: function(params,cb){
-		$.ajax({
-            type: "POST",
-			url: "http://localhost:8000/api/v1/lists",
-			data: JSON.stringify(params),
-			success: function ( data ) {
-				return cb(data);
-			}
-    	});
+  		var list = App.List.createRecord(params)  		
+		list.addObserver('id', list, cb);
+  		App.store.commit()
   	}
 })
 

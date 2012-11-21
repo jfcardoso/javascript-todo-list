@@ -1,3 +1,10 @@
+App.Item = Ember.Object.extend({
+  id: null,
+  name: '',
+  done: false,
+  list: null
+});
+
 var ItemService = Ember.Object.create({
 	query: function(params,cb){
 		itemsByList = [];

@@ -10,7 +10,11 @@ App.Router = Ember.Router.extend({
 		index: Ember.Route.extend({
 			route: '/',
 			connectOutlets: function(router) {
-				router.get('applicationController').connectOutlet('list');
+				var lists = {}
+				ListService.query({},function(result){
+					lists = {lists: result};
+				})
+				router.get('applicationController').connectOutlet('list',lists);
 			}
 		}),
 		newList: Ember.Route.extend({

@@ -1,3 +1,9 @@
+App.List = Ember.Object.extend({
+  id: null,
+  name: '',
+  open_items: 0,
+});
+
 var ListService = Ember.Object.create({ 
 	query: function(params,cb){
 		return cb(lists);
