@@ -1,14 +1,14 @@
 angular.module('module-list',[])
   .factory('ListProvider',function(){
     var lists = [
-      { 
-        id:1, 
-        name:'Learn AngularJS', 
+      {
+        id:1,
+        name:'Learn AngularJS',
         open_items: 1
       },
-      { 
-        id:2, 
-        name:'Learn Django', 
+      {
+        id:2,
+        name:'Learn Django',
         open_items: 1
       }
     ];
@@ -24,11 +24,11 @@ angular.module('module-list',[])
         }
       }
 
-    }
+    };
 
     listProvider.prototype.query = function(params,cb) {
       return cb(lists);
-    }
+    };
 
     listProvider.prototype.save = function(list,cb) {
       if (list.id){
@@ -36,10 +36,10 @@ angular.module('module-list',[])
           oldList.name = list.name;
           oldList.open_items = list.open_items;
           return cb(oldList);
-        })
+        });
       }else{
         var new_id = lists.length+1;
-        var new_list = { 
+        var new_list = {
           id: new_id,
           name: list.name,
           open_items: 0
@@ -47,7 +47,7 @@ angular.module('module-list',[])
         lists.push(new_list);
         return cb(new_list);
       }
-    }
+    };
 
     listProvider.prototype.remove = function(id,cb) {
       for (i=0;i<lists.length;i++){
@@ -56,14 +56,14 @@ angular.module('module-list',[])
           return cb();
         }
       }
-    }
+    };
 
     var service = {
         getInstance:function(){ return new listProvider(); }
-    }
+    };
 
     return service;
   })
   .service('ListService', ['ListProvider',function(ListProvider){
       return ListProvider.getInstance();
-  }])
+  }]);

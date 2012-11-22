@@ -1,41 +1,41 @@
 angular.module('module-item',[])
   .factory('ItemProvider',function(){
     var items = [
-      { 
-        id:1, 
-        name:'Todo Item 1 of AngularJS', 
-        done: false,
-        list:{ 
-                id:1, 
-                name:'Learn AngularJS', 
-              },
-      },
-      { 
-        id:2, 
-        name:'Todo Item 2 of AngularJS', 
-        done: true,
-        list:{ 
-                id:1, 
-                name:'Learn AngularJS', 
-              },
-      },
-      { 
-        id: 3,
-        name:'Todo Item 1 of Django', 
+      {
+        id:1,
+        name:'Todo Item 1 of AngularJS',
         done: false,
         list:{
-                id:2, 
-                name:'Learn Django', 
-              },
+                id:1,
+                name:'Learn AngularJS'
+              }
       },
-      { 
-        id: 4,
-        name:'Todo Item 2 of Django', 
+      {
+        id:2,
+        name:'Todo Item 2 of AngularJS',
         done: true,
-        list:{ 
-                id:2, 
-                name:'Learn Django', 
-              },
+        list:{
+                id:1,
+                name:'Learn AngularJS'
+              }
+      },
+      {
+        id: 3,
+        name:'Todo Item 1 of Django',
+        done: false,
+        list:{
+                id:2,
+                name:'Learn Django'
+              }
+      },
+      {
+        id: 4,
+        name:'Todo Item 2 of Django',
+        done: true,
+        list:{
+                id:2,
+                name:'Learn Django'
+              }
       }
     ];
 
@@ -47,7 +47,7 @@ angular.module('module-item',[])
           return cb(items[i]);
         }
       }
-    }
+    };
 
     itemProvider.prototype.query = function(params, cb) {
       itemsByList = [];
@@ -57,7 +57,7 @@ angular.module('module-item',[])
         }
       }
       return cb(itemsByList);
-    }
+    };
 
     itemProvider.prototype.save = function(item,cb) {
       if (item.id){
@@ -66,18 +66,18 @@ angular.module('module-item',[])
           oldItem.list = item.list;
           oldItem.done = item.done;
           return cb(oldItem);
-        })
+        });
       }else{
         var new_id = items.length+1;
-        var new_item = { id:new_id, 
-          name:item.name, 
-          done: false, 
+        var new_item = { id:new_id,
+          name:item.name,
+          done: false,
           list: item.list
         };
         items.push(new_item);
         return cb(new_item);
       }
-    }
+    };
 
     itemProvider.prototype.remove = function(id,cb) {
       for (i=0;i<items.length;i++){
@@ -86,14 +86,14 @@ angular.module('module-item',[])
           return cb();
         }
       }
-    }
+    };
 
     var service = {
         getInstance:function(){ return new itemProvider(); }
-    }
+    };
 
     return service;
   })
   .service('ItemService', ['ItemProvider',function(ItemProvider){
       return ItemProvider.getInstance();
-  }])
+  }]);
