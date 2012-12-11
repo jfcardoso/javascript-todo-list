@@ -9,4 +9,4 @@ javascript-todo-list
 
 ### Restful Api with Django 
 
-- Example de Restful backend implementation here [django-todolist-api](https://github.com/jandersonfc/django-todolist-api)
+- Example of Restful backend implementation in [django-todolist-api](https://github.com/jandersonfc/django-todolist-api)
