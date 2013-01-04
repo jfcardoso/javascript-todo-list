@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Todo List - BackboneJS</title>
+    <link type="text/css" rel="stylesheet" media="screen" href="css/bootstrap.css"/>
+    <link type="text/css" rel="stylesheet" media="screen" href="css/todolist.css"/>
+</head>
+
+<body>
+    
+    <div class="container">
+        <header>
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <a class="brand" href="#">
+                            Todo List - BackboneJS
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div id="content"></div>
+    
+        <footer class="container navbar navbar-fixed-top">
+            <hr>
+            <p><small>&copy; 2012. <a href="https://twitter.com/jandersonfc">@jandersonfc</a> none rights reserved. based in one old app the 37signals called tadalist</small></p>
+        </footer>
+    </div>
+
+    <!-- TEMPLATES -->
+    <script type="text/template" id="list">
+        <div class="row">
+            <center>
+                <div class="well well-small well-radius span3" >
+                    <h4>My Lists  <small><a href="#/lists/new">  create a new list</a></small></h4> 
+                </div>
+            </center>
+        </div>
+        <div>
+             <h6><small>MY LISTS</small></h6>
+             <hr>
+             <ul id="lists" class="lists" >
+                
+             </ul>
+        </div>
+    </script>
+
+    <script type="text/template" id="list-li">
+        <h5>
+            <a href="#/lists/<%= id %>/items"><%= name %></a>
+            <small> - <%= open_items %> left</small>
+        </h5>
+    </script>
+
+    <script type="text/template" id="new-list">
+        <div class="row">
+            <center>
+                <div class="well well-small well-radius span2" >
+                    <h4><a href="#/">My Lists</a></h4>
+                </div>
+            </center>
+        </div>
+
+        <div class="row" >
+            <form id="form-list" action="#">
+                <div>
+                    <label><h5>Name your new list <small>(Ex.:"Learn Backbonejs")</small></h5></label>
+                    <input type="text" id="name" class="span5" required >
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary btn-mini btn-radius">Create this list</button> or 
+                <a href="#/">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </script>    
+
+    <!-- LIBS -->
+    <script src="js/lib/jquery-1.7.2.min.js"></script>
+    <script src="js/lib/bootstrap.js"></script>
+    <script src="js/lib/underscore.js"></script>
+    <script src="js/lib/backbone.js"></script>
+    
+    <!-- MOCKS -->
+    <script src="js/app/model/mock/backbone-localstorage.js"></script>
+    <script src="js/app/model/mock/list-mock.js"></script> 
+    
+    <!-- MODELS 
+    <script src="js/app/model/list-model.js"></script> -->
+
+    <!-- VIEWS -->
+    <script src="js/app/view/list-view.js"></script>
+
+    <!-- APP | ROUTER -->
+    <script src="js/app/todolist.js"></script>
+
+</body>
+</html>
