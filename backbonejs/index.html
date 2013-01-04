@@ -43,7 +43,14 @@
              <h6><small>MY LISTS</small></h6>
              <hr>
              <ul id="lists" class="lists" >
-                
+                <% _.each(this.model.models, function (list) { %>
+                    <li>
+                        <h5>
+                            <a href="#/lists/<%= list.get('id') %>/items"><%= list.get('name') %></a>
+                            <small> - <%= list.get('open_items') %> left</small>
+                        </h5>
+                    </li>
+                <% }); %>
              </ul>
         </div>
     </script>
@@ -76,7 +83,7 @@
                 </div>
             </form>
         </div>
-    </script>    
+    </script>
 
     <!-- LIBS -->
     <script src="js/lib/jquery-1.7.2.min.js"></script>

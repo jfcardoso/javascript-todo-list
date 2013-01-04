@@ -1,14 +1,3 @@
-window.ListItemView = Backbone.View.extend({
-    tagName: 'li',
-    template:_.template($('#list-li').html()),
- 
-    render:function (eventName) {
-        $(this.el).html(this.template(this.model.toJSON()));
-        return this;
-    }
-
-});
-
 window.ListView = Backbone.View.extend({
 
     template:_.template($('#list').html()),
@@ -19,9 +8,6 @@ window.ListView = Backbone.View.extend({
 
     render:function (eventName) {
         $(this.el).html(this.template());
-        _.each(this.model.models, function (list) {
-            this.$('#lists').append(new ListItemView({model:list}).render().el);
-        }, this);
         return this;
     },
 

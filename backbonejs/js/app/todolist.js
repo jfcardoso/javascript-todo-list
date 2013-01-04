@@ -1,6 +1,4 @@
 
-window.listView = new ListView({model:listCollection});
-
 // Router
 var AppRouter = Backbone.Router.extend({
  
@@ -10,8 +8,9 @@ var AppRouter = Backbone.Router.extend({
     },
  
     list:function () {
+        this.listView = new ListView({model:listCollection});
         listCollection.fetch();
-        $('#content').html(listView.render().el);
+        $('#content').html(this.listView.render().el);
     },
 
     newList:function () {
