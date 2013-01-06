@@ -5,7 +5,7 @@ javascript-todo-list
 
 - [AngularJS](https://github.com/jandersonfc/javascript-todo-list/tree/master/angularjs) (implementing...)
 - [EmberJS](https://github.com/jandersonfc/javascript-todo-list/tree/master/emberjs) (implementing...)
-- [BackboneJS](https://github.com/jandersonfc/javascript-todo-list/tree/master/backbonejs) (not implemented yet)
+- [BackboneJS](https://github.com/jandersonfc/javascript-todo-list/tree/master/backbonejs) (implementing...)
 
 ### Restful Api with Django 
 

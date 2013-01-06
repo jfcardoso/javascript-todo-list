@@ -11,14 +11,22 @@ window.ListView = Backbone.View.extend({
         return this;
     },
 
+    populateData:function () {
+        this.model.fetch();
+    },
+
+    close:function () {
+        $(this.el).unbind();
+        $(this.el).empty();
+    }
+
 });
 
 window.NewListView = Backbone.View.extend({
-
     template:_.template($('#new-list').html()),
 
     initialize:function () {
-        this.model.bind("sync", this.navigateHome ,this);
+        this.model.bind("change:id", this.navigateHome ,this);
     },
 
     render:function (eventName) {
@@ -34,7 +42,7 @@ window.NewListView = Backbone.View.extend({
         this.model.set({
             name:$('#name').val()
         });
-        listCollection.create(this.model);
+        this.model.save();
         return false;
     },
 

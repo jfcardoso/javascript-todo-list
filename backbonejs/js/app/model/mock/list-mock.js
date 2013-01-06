@@ -1,5 +1,5 @@
 window.List = Backbone.Model.extend({
-  urlRoot: 'lists',
+  localStorage: new Backbone.LocalStorage("list"),
   defaults: function() {
     return {
         name: "",
@@ -9,15 +9,14 @@ window.List = Backbone.Model.extend({
 });
 
 window.ListCollection = Backbone.Collection.extend({
-    url: 'lists',
     model: List,
     localStorage: new Backbone.LocalStorage("list"),
-    initialize: function(){
-      localStorage.clear();  
-    }
 });
 
-window.listCollection = new ListCollection();
+var lists = new ListCollection();
+
+//clear all datas
+localStorage.clear();
 
 var list1 = new List(
   {
@@ -35,6 +34,6 @@ var list2 = new List(
   }
 );
 
-listCollection.create(list1);
-listCollection.create(list2);
+lists.create(list1);
+lists.create(list2);
 
