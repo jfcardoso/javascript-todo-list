@@ -5,12 +5,12 @@ window.List = Backbone.Model.extend({
         name: "",
         open_items: 0
       };
-    },
+    }
 });
 
 window.ListCollection = Backbone.Collection.extend({
     model: List,
-    localStorage: new Backbone.LocalStorage("list"),
+    localStorage: new Backbone.LocalStorage("list")
 });
 
 var lists = new ListCollection();

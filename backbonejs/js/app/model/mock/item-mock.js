@@ -5,7 +5,7 @@ window.Item = Backbone.Model.extend({
         name: "",
         done: false
       };
-    },
+    }
 });
 
 window.ItemCollection = Backbone.Collection.extend({

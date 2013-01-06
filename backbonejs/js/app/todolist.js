@@ -5,7 +5,7 @@ var AppRouter = Backbone.Router.extend({
     routes:{
         "":"list",
         "lists/new":"newList",
-        "lists/:listId/items":"todo",
+        "lists/:listId/items":"todo"
     },
 
     list:function () {

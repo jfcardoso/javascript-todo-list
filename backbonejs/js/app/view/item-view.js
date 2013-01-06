@@ -109,6 +109,6 @@ window.ItemView = Backbone.View.extend({
         $(this.el).html(this.template({list: this.list.toJSON()}));
         return this;
 
-    },
+    }
 
 });

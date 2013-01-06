@@ -38,7 +38,6 @@ _.extend(Backbone.LocalStorage.prototype, {
 
   // Save the current state of the **Store** to *localStorage*.
   save: function() {
-    console.log(this.records)
     this.localStorage().setItem(this.name, this.records.join(","));
   },
 
@@ -158,12 +157,6 @@ _.extend(Backbone.LocalStorage.prototype, {
 
   localStorage: function() {
       return localStorage;
-  },
-
-  clearAllDatas: function() {
-      this.records = [];
-      this.localStorage().clear();
-      console.log(this.records)
   }
 
 });
